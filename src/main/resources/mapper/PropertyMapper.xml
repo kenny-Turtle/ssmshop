@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.PropertyMapper">
+
+    <insert id="insert" parameterType="com.zfj.pojo.Property">
+        insert into tmall_ssm.property (name, category_id)
+        values (#{name},#{category_id});
+    </insert>
+
+    <delete id="deleteByPrimaryKey">
+        delete from tmall_ssm.property where id=#{id}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.Property">
+        update tmall_ssm.property
+        set name       = #{name},
+            category_id=#{category_id}
+        where id=#{id};
+    </update>
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.Property">
+        select id,name,category_id from tmall_ssm.property where id=#{id}
+    </select>
+
+    <select id="selectByExample" resultType="com.zfj.pojo.Property">
+        select id,name,category_id from tmall_ssm.property where category_id=#{category_id}
+    </select>
+
+</mapper>

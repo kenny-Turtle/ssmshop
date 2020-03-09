@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.PropertyValueMapper">
+
+  <insert id="insert" parameterType="com.zfj.pojo.PropertyValue">
+    insert into tmall_ssm.property_value (id, product_id, property_id, value)
+    values (#{id},#{product_id},#{property_id},#{value});
+  </insert>
+
+  <delete id="deleteByPrimaryKey">
+    delete from tmall_ssm.property_value where id=#{id}
+  </delete>
+
+  <delete id="deleteByProductId">
+    delete from tmall_ssm.property_value where product_id=#{product_id}
+  </delete>
+
+  <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.PropertyValue">
+    update tmall_ssm.property_value
+    set product_id = #{product_id},
+        property_id=#{property_id},
+        value=#{value}
+    where id=#{id};
+  </update>
+
+  <select id="selectByExample" resultType="com.zfj.pojo.PropertyValue">
+    select * from tmall_ssm.property_value
+    where property_id=#{property_id} and product_id=#{product_id}
+  </select>
+
+  <select id="selectByPrimaryKey" resultType="com.zfj.pojo.PropertyValue">
+    select * from tmall_ssm.property_value where id=#{id}
+  </select>
+
+  <select id="selectByProductId" resultType="com.zfj.pojo.PropertyValue">
+    select * from tmall_ssm.property_value where product_id=#{product_id}
+  </select>
+
+
+
+
+</mapper>

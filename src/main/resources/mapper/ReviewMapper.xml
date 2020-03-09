@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.ReviewMapper">
+
+
+    <select id="selectByExample" resultType="com.zfj.pojo.Review">
+        select * from tmall_ssm.review
+    </select>
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.Review">
+        select id, content, user_id, product_id, createDate from tmall_ssm.review where id=#{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey">
+        delete from tmall_ssm.review where id=#{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.zfj.pojo.Review">
+        insert into tmall_ssm.review
+            (content, user_id, product_id, createDate)
+        VALUES (#{content}, #{user_id}, #{product_id}, #{createDate})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.Review">
+        update tmall_ssm.review
+        set content=#{content},user_id=#{user_id},product_id=#{product_id},createDate=#{createDate}
+        where id=#{id};
+    </update>
+
+    <select id="selectByProductId" resultType="com.zfj.pojo.Review">
+        select *
+        from tmall_ssm.review
+        where product_id=#{product_id};
+    </select>
+
+</mapper>

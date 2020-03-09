@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.UserMapper">
+
+    <select id="selectByExample" resultType="com.zfj.pojo.User">
+        select id,name,password from tmall_ssm.user
+    </select>
+    
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.User">
+        update tmall_ssm.user
+        set name = #{name},password=#{password}
+        where id=#{id};
+    </update>
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.User">
+        select id,name,password from tmall_ssm.user
+        where id=#{id}
+    </select>
+
+    <select id="isExist" resultType="com.zfj.pojo.User">
+        select * from tmall_ssm.user where name=#{name}
+    </select>
+
+    <select id="selectByName" resultType="com.zfj.pojo.User">
+        select id,name,password from tmall_ssm.user
+    </select>
+
+    <insert id="insert" parameterType="com.zfj.pojo.User">
+        insert into tmall_ssm.user (name, password)
+        values (#{name},#{password});
+    </insert>
+
+    <select id="selectByNamePwd" resultType="com.zfj.pojo.User">
+        select * from tmall_ssm.user where name=#{name} and password=#{password}
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.OrderItemMapper">
+
+    <insert id="insert" parameterType="com.zfj.pojo.OrderItem">
+        insert into tmall_ssm.order_item (id, product_id, order_id, user_id, number)
+        values (#{id},#{product_id},#{order_id},#{user_id},#{number});
+    </insert>
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.OrderItem">
+        select id, product_id, order_id, user_id, number
+        from tmall_ssm.order_item where id=#{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey">
+        delete from tmall_ssm.order_item
+        where id=#{id}
+    </delete>
+
+    <select id="selectByOrderId" resultType="com.zfj.pojo.OrderItem">
+        select * from tmall_ssm.order_item where order_id=#{order_id}
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.OrderItem">
+        update tmall_ssm.order_item
+        set product_id=#{product_id},order_id=#{order_id},user_id=#{user_id},number=#{number}
+        where id=#{id};
+    </update>
+
+    <select id="listByUserId" resultType="com.zfj.pojo.OrderItem">
+        select * from tmall_ssm.order_item where user_id=#{user_id}
+    </select>
+
+    <select id="listForCart" resultType="com.zfj.pojo.OrderItem">
+        select * from tmall_ssm.order_item where user_id=#{user_id} and order_id is null
+    </select>
+
+
+
+</mapper>

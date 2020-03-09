@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.OrderMapper">
+
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.Order">
+        select id, order_code, address, post,
+               receiver, mobile, user_message, create_date,
+               pay_date, delivery_date, confirm_date, user_id,
+               status from tmall_ssm.order_ where id=#{id}
+    </select>
+
+    <select id="selectByExample" resultType="com.zfj.pojo.Order">
+        select * from tmall_ssm.order_
+    </select>
+
+    <select id="selectByUserId" resultType="com.zfj.pojo.Order">
+        select * from tmall_ssm.order_ where user_id=#{user_id}
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.Order">
+        update tmall_ssm.order_
+        set order_code=#{order_code},address=#{address},post=#{post},
+            receiver=#{receiver},mobile=#{mobile},user_message=#{user_message},
+            create_date=#{create_date},pay_date=#{pay_date},delivery_date=#{delivery_date},
+            confirm_date=#{confirm_date},user_id=#{user_id},status=#{status}
+        where id=#{id};
+    </update>
+
+    <insert id="insert" parameterType="com.zfj.pojo.Order">
+        insert into tmall_ssm.order_
+            (order_code, address, post, receiver, mobile, user_message, create_date,
+                                      pay_date, delivery_date, confirm_date, user_id, status)
+        values (#{order_code},#{address},#{post},
+                #{receiver},#{mobile},#{user_message},
+                #{create_date},#{pay_date},#{delivery_date},
+                #{confirm_date},#{user_id},#{status});
+    </insert>
+
+    <select id="list" resultType="com.zfj.pojo.Order">
+        select * from tmall_ssm.order_ where user_id=#{user_id} and status!=#{status}
+    </select>
+
+    <select id="selectByCode" resultType="java.lang.Integer">
+        select id from tmall_ssm.order_ where order_code=#{code};
+    </select>
+
+
+
+</mapper>

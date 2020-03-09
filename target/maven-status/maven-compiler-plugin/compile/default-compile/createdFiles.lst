@@ -1,0 +1,5 @@
+com\zfj\service\TestService.class
+com\zfj\mapper\TestMapper.class
+com\zfj\pojo\Test.class
+com\zfj\service\TestServiceImpl.class
+com\zfj\controller\TestController.class

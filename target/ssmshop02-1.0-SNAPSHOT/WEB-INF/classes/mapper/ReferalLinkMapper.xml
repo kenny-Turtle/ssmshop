@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfj.mapper.ReferalLinkMapper">
+
+    <insert id="insert" parameterType="com.zfj.pojo.ReferalLink">
+        insert into tmall_ssm.referal_link (id, text, link)
+        values (#{id},#{text},#{link});
+    </insert>
+
+    <delete id="deleteByPrimaryKey">
+        delete from tmall_ssm.referal_link where id=#{id}
+    </delete>
+
+    <select id="selectByExample" resultType="com.zfj.pojo.ReferalLink">
+        select * from tmall_ssm.referal_link
+    </select>
+
+    <select id="selectByPrimaryKey" resultType="com.zfj.pojo.ReferalLink">
+        select * from tmall_ssm.referal_link where id=#{id}
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="com.zfj.pojo.ReferalLink">
+        update tmall_ssm.referal_link
+        set text=#{text},link=#{link}
+        where id=#{id};
+    </update>
+
+
+
+</mapper>
